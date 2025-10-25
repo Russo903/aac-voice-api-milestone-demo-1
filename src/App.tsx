@@ -130,6 +130,7 @@ function App() {
                 onClick={() => changeColor("darkseagreen", "Green")}
                 icon={faSplotch} />
         </div>
+        <div className='box-container-square'>
       <div
           className="border"
           style={{
@@ -150,7 +151,9 @@ function App() {
             <div key={i}>{l}</div>
         ))}
       </pre>
+    </div>
     </>
+
   )
 }
 
