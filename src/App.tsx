@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSplotch } from '@fortawesome/free-solid-svg-icons'
-import {AACVoiceAPI} from "aac-voice-api";
+
 
 import './App.css'
 
@@ -11,6 +11,8 @@ function App() {
     const [isListening, setIsListening] = useState<boolean>(false);
     const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(false);
     const [log, setLog] = useState<string[]>([])
+    const [isButtonsVisible, setIsButtonsVisible] = useState<boolean>(false);
+
 
     const voiceApi = useRef<AACVoiceAPI | null>(null);
     const wasInitiated = useRef<boolean>(false);
@@ -20,24 +22,27 @@ function App() {
         setLog((prev) => [...prev, message]);
     }
 
-    useEffect(() => {
-        if (!isListening) return;
 
-        const intervalId = setInterval(() => {
-            const transcribed = voiceApi.current?.getTranscribedFull();
+    const callInitiate = async (modelUrl: string, lang: string) => {
+        
+    }
+    const callStart  = async () => {
+        
+    }
+    const callStop = async () => {
+        
+    }
+    const commandHistory = async () => {
+        
+    }
+    const addCommand = (name: string, action: ()=>void) =>{
+        return false;
+    }
 
-            if ((transcribed?.length || 0) > lastTranscriptionCount.current) {
-                const newEntries = transcribed?.slice(lastTranscriptionCount.current);
-                newEntries?.forEach(entry => {
-                    appendLog(entry);
-                });
 
-                lastTranscriptionCount.current = transcribed?.length || 0;
-            }
-        }, 200);
 
-        return () => clearInterval(intervalId);
-    }, [isListening]);
+
+
 
     const initVoice = async () => {
         const modelUrl = 'https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-tiny.bin';
@@ -45,20 +50,20 @@ function App() {
             if (!voiceApi.current) {
                 voiceApi.current = new AACVoiceAPI()
             }
-
-            await voiceApi.current.initiate(modelUrl, 'en');
-            appendLog("[System] Whisper initialized.\\n");
+            
+            callInitiate(modelUrl, "en");
+            appendLog("[System] Whisper initialized.");
             setIsButtonDisabled(true);
             wasInitiated.current = true;
             setupVoiceCommands();
         } catch (e) {
-            appendLog('[Error] Init failed: ' + e + '\\n');
+            appendLog('[Error] Init failed: ' + e);
         }
     }
 
     const startListening = async () => {
         try {
-            await voiceApi.current?.start();
+            callStart();
             setIsListening(true);
             appendLog('[System] Started listening...\\n');
         } catch (e) {
@@ -68,7 +73,7 @@ function App() {
 
     const stopListening = async () => {
         try {
-            await voiceApi.current?.stop();
+            callStop();
             setIsListening(false);
             appendLog('[System] Stopped listening...\\n');
         } catch (e) {
@@ -78,16 +83,18 @@ function App() {
 
     const showCommandHistory = () => {
         try {
-            voiceApi.current?.displayCommandHistory();
+            commandHistory();
         } catch (e: any) {
             appendLog("[Error] Display popup failed: " + e.message);
         }
     };
 
+
     const changeColor = (color: string, colorText: string) => {
         setColor(color);
         setColorText(colorText);
     }
+
 
     const setupVoiceCommands = () => {
         if (!voiceApi.current) return;
@@ -112,10 +119,30 @@ function App() {
         ];
 
         commands.forEach(cmd => {
-            const added = voiceApi.current?.addVoiceCommand(cmd.name, cmd.action);
+            const added = addCommand(cmd.name, cmd.action);
             if (added) appendLog(`[System] Command added: ${cmd.name}`);
         });
     };
+
+
+        useEffect(() => {
+        if (!isListening) return;
+
+        const intervalId = setInterval(() => {
+            const transcribed = voiceApi.current?.getTranscribedFull();
+
+            if ((transcribed?.length || 0) > lastTranscriptionCount.current) {
+                const newEntries = transcribed?.slice(lastTranscriptionCount.current);
+                newEntries?.forEach(entry => {
+                    appendLog(entry);
+                });
+
+                lastTranscriptionCount.current = transcribed?.length || 0;
+            }
+        }, 200);
+
+        return () => clearInterval(intervalId);
+    }, [isListening]);
 
 
     return (
@@ -146,7 +173,7 @@ function App() {
           }}>
           <p>{colorText}</p>
       </div>
-
+          {isButtonsVisible && (<>
         <div className="voice-controls">
             { isButtonDisabled ? (
                 <button disabled={true}>Initiate</button> ) :
@@ -169,6 +196,8 @@ function App() {
             <div key={i}>{l}</div>
         ))}
       </pre>
+      </>
+)}
     </div>
     </>
 
