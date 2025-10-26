@@ -6,8 +6,8 @@ import {AACVoiceAPI} from "aac-voice-api";
 import './App.css'
 
 function App() {
-    const [color, setColor] = useState<string>("dodgerblue")
-    const [colorText, setColorText] = useState<string>("Blue")
+    const [color, setColor] = useState<string>("white")
+    const [colorText, setColorText] = useState<string>("")
     const [isListening, setIsListening] = useState<boolean>(false);
     const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(false);
     const [log, setLog] = useState<string[]>([])
@@ -105,6 +105,10 @@ function App() {
                 name: "green",
                 action: () => changeColor("darkseagreen", "Green"),
             },
+            {
+                name: "clear",
+                action: () => changeColor("white", ""),
+            },
         ];
 
         commands.forEach(cmd => {
@@ -156,9 +160,8 @@ function App() {
                     <button onClick={stopListening}>Stop</button>) :
                 (<button disabled={true}>Stop</button>)
             }
-
-
             <button onClick={showCommandHistory}>Show History</button>
+            <button onClick={() => changeColor("white", "")}>Clear</button>
         </div>
 
         <pre className="log-box">
