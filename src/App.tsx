@@ -9,9 +9,11 @@ function App() {
     const [color, setColor] = useState<string>("dodgerblue")
     const [colorText, setColorText] = useState<string>("Blue")
     const [isListening, setIsListening] = useState<boolean>(false);
+    const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(false);
     const [log, setLog] = useState<string[]>([])
 
     const voiceApi = useRef<AACVoiceAPI | null>(null);
+    const wasInitiated = useRef<boolean>(false);
     const lastTranscriptionCount = useRef<number>(0);
 
     const appendLog = (message: string) => {
@@ -46,6 +48,8 @@ function App() {
 
             await voiceApi.current.initiate(modelUrl, 'en');
             appendLog("[System] Whisper initialized.\\n");
+            setIsButtonDisabled(true);
+            wasInitiated.current = true;
             setupVoiceCommands();
         } catch (e) {
             appendLog('[Error] Init failed: ' + e + '\\n');
@@ -140,9 +144,20 @@ function App() {
       </div>
 
         <div className="voice-controls">
-            <button onClick={initVoice}>Init</button>
-            <button onClick={startListening}>Start</button>
-            <button onClick={stopListening}>Stop</button>
+            { isButtonDisabled ? (
+                <button disabled={true}>Initiate</button> ) :
+                (<button onClick={initVoice}>Initiate</button>)
+            }
+            { wasInitiated.current && !isListening ? (
+                    <button onClick={startListening}>Start</button> ) :
+                (<button disabled={true}>Start</button>)
+            }
+            { isListening ? (
+                    <button onClick={stopListening}>Stop</button>) :
+                (<button disabled={true}>Stop</button>)
+            }
+
+
             <button onClick={showCommandHistory}>Show History</button>
         </div>
 
