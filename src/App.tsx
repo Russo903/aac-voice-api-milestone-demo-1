@@ -1,8 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSplotch } from '@fortawesome/free-solid-svg-icons'
-
-
+import {AACVoiceAPI} from "aac-voice-api";
 import './App.css'
 
 function App() {
@@ -11,7 +10,7 @@ function App() {
     const [isListening, setIsListening] = useState<boolean>(false);
     const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(false);
     const [log, setLog] = useState<string[]>([])
-    const [isButtonsVisible, setIsButtonsVisible] = useState<boolean>(false);
+    const [isButtonsVisible, setIsButtonsVisible] = useState<boolean>(true);
 
 
     const voiceApi = useRef<AACVoiceAPI | null>(null);
@@ -24,19 +23,19 @@ function App() {
 
 
     const callInitiate = async (modelUrl: string, lang: string) => {
-        
+        await voiceApi.current?.initiate(modelUrl, lang);
     }
     const callStart  = async () => {
-        
+        await voiceApi.current?.start();
     }
     const callStop = async () => {
-        
+        await voiceApi.current?.stop();
     }
     const commandHistory = async () => {
-        
+        await voiceApi.current?.displayCommandHistory();
     }
     const addCommand = (name: string, action: ()=>void) =>{
-        return false;
+        return voiceApi.current?.addVoiceCommand(name, action);
     }
 
 
