@@ -1,0 +1,62 @@
+{
+  "$schema": "https://demotime.show/demo-time.schema.json",
+  "title": "AAC API MileStone Demos",
+  "version": 2,
+  "demos": [
+    {
+      "id": "demo-mhpmjyyd-ob8v",
+      "title": "Highlight empty code block",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "src/App.tsx",
+          "startPlaceholder": "//d1s",
+          "endPlaceholder": "//d1e"
+        }
+      ],
+      "description": "highlights empty block of code to be filled in for initiate"
+    },
+    {
+      "id": "demo-mhpo4tiw-cx5z",
+      "title": "Add Offline",
+      "steps": [
+        {
+          "action": "insert",
+          "path": "src/App.tsx",
+          "contentPath": "demofiles/offlineMode.js",
+          "startPlaceholder": "//d2s",
+          "insertTypingMode": "line-by-line",
+          "insertTypingSpeed": 100
+        },
+        {
+          "action": "highlight",
+          "path": "src/App.tsx",
+          "startPlaceholder": "//d2s",
+          "endPlaceholder": "//d2e"
+        }
+      ]
+    },
+    {
+      "id": "demo-mhppgq7o-zpm4",
+      "title": "Add Online",
+      "steps": [
+        {
+          "action": "insert",
+          "path": "src/App.tsx",
+          "contentPath": "demofiles/onlineMode.js",
+          "startPlaceholder": "//d3s",
+          "insertTypingMode": "line-by-line",
+          "insertTypingSpeed": 100
+        },
+        {
+          "action": "highlight",
+          "path": "src/App.tsx",
+          "startPlaceholder": "//d4s",
+          "endPlaceholder": "//d4e"
+        }
+      ],
+      "description": "adds the ability to use the Online mode"
+    }
+  ],
+  "description": "Code Demo 2 used to present capstone project in cis4398 fall 25"
+}

@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSplotch } from '@fortawesome/free-solid-svg-icons'
 import { AACVoiceAPI } from "aac-voice-api";
-import './App.css'
 
 function App() {
     const [color, setColor] = useState<string>("white")
@@ -16,34 +15,17 @@ function App() {
     const voiceApi = useRef<AACVoiceAPI | null>(null);
     const wasInitiated = useRef<boolean>(false);
     const lastTranscriptionCount = useRef<number>(0);
-
+    const modelUrl = 'https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-tiny.bin';
     const appendLog = (message: string) => {
         setLog((prev) => [...prev, message]);
     }
 
-    const initVoice = async () => {
-        try {
+    const initVoice = async () => {//d1s
+        try {//call initiate here
             if (!voiceApi.current) {
                 voiceApi.current = new AACVoiceAPI()
             }
-
-            if (mode === 'offline') {
-                // Offline mode
-                const modelUrl = 'https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-tiny.bin';
-                await voiceApi.current.initiate({
-                    mode: 'offline',
-                    modelUrl: modelUrl,
-                    language: 'en'
-                });
-                appendLog("[System] ✓ Offline mode initialized (local Whisper)");
-            } else {
-                await voiceApi.current.initiate({
-                    mode: 'online',
-                    useSpeakerSeparation: useSeparation
-                });
-                const sepText = useSeparation ? ' with speaker separation' : ' (single speaker)';
-                appendLog(`[System] ✓ Online mode initialized${sepText}`);
-            }
+            //d2s
 
             setIsButtonDisabled(true);
             wasInitiated.current = true;
@@ -51,17 +33,17 @@ function App() {
         } catch (e) {
             appendLog('[Error] Init failed: ' + e);
         }
-    }
+    }//d1e
 
-    const startListening = async () => {
+    const startListening = async () => {//d4s
         try {
-            voiceApi.current?.start();
+            voiceApi.current?.start();//d5s //d5e
             setIsListening(true);
             appendLog('[System] Started listening...\n');
         } catch (e) {
             appendLog('[Error] Start failed: ' + e + '\n');
         }
-    }
+    }//d4e
 
     const stopListening = async () => {
         try {
@@ -92,6 +74,7 @@ function App() {
     const showCommandHistory = () => {
         try {
             voiceApi.current?.displayCommandHistory();
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (e: any) {
             appendLog("[Error] Display popup failed: " + e.message);
         }
