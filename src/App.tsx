@@ -25,7 +25,9 @@ function App() {
             if (!voiceApi.current) {
                 voiceApi.current = new AACVoiceAPI()
             }
-            //d2s
+            //ds2
+
+
 
             setIsButtonDisabled(true);
             wasInitiated.current = true;
@@ -35,19 +37,19 @@ function App() {
         }
     }//d1e
 
-    const startListening = async () => {//d4s
+    const startListening = async () => {//d5s
         try {
-            voiceApi.current?.start();//d5s //d5e
+            voiceApi.current?.start();//d5e
             setIsListening(true);
             appendLog('[System] Started listening...\n');
         } catch (e) {
             appendLog('[Error] Start failed: ' + e + '\n');
         }
-    }//d4e
+    }
 
-    const stopListening = async () => {
+    const stopListening = async () => {//d6s
         try {
-            voiceApi.current?.stop();
+            voiceApi.current?.stop();//d6e
             setIsListening(false);
             appendLog('[System] Stopped listening...\n');
         } catch (e) {
@@ -71,9 +73,9 @@ function App() {
         }
     }
 
-    const showCommandHistory = () => {
+    const showCommandHistory = () => {//d7s
         try {
-            voiceApi.current?.displayCommandHistory();
+            voiceApi.current?.displayCommandHistory();//d7e
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (e: any) {
             appendLog("[Error] Display popup failed: " + e.message);
@@ -88,29 +90,9 @@ function App() {
     const setupVoiceCommands = () => {
         if (!voiceApi.current) return;
 
-        const commands = [
-            {
-                name: "blue",
-                action: () => changeColor("dodgerblue", "Blue"),
-            },
-            {
-                name: "red",
-                action: () => changeColor("darkred", "Red"),
-            },
-            {
-                name: "green",
-                action: () => changeColor("darkseagreen", "Green"),
-            },
-            {
-                name: "clear",
-                action: () => changeColor("white", ""),
-            },
-        ];
+        //d8s
 
-        commands.forEach(cmd => {
-            const added = voiceApi.current?.addVoiceCommand(cmd.name, cmd.action);
-            if (added) appendLog(`[System] Command added: ${cmd.name}`);
-        });
+        //d11s
     };
 
     useEffect(() => {
