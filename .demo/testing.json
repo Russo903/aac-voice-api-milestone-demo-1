@@ -4,6 +4,24 @@
   "version": 2,
   "demos": [
     {
+      "id": "demo-mhpvgxug-h08g",
+      "title": "npm install",
+      "steps": [
+        {
+          "action": "openTerminal",
+          "terminalId": "1"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "npm install aac-voice-api",
+          "insertTypingMode": "character-by-character",
+          "insertTypingSpeed": 50,
+          "autoExecute": true,
+          "terminalId": "1"
+        }
+      ]
+    },
+    {
       "id": "demo-mhpmjyyd-ob8v",
       "title": "Highlight empty code block",
       "steps": [
