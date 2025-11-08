@@ -25,7 +25,7 @@ function App() {
             if (!voiceApi.current) {
                 voiceApi.current = new AACVoiceAPI()
             }
-            //ds2
+            //d2s
 
 
 
