@@ -11,6 +11,7 @@ function App() {
     const [log, setLog] = useState<string[]>([])
     const [mode, setMode] = useState<'offline' | 'online'>('offline');
     const [useSeparation, setUseSeparation] = useState<boolean>(false);
+    const [isVoiceEnabled, setIsVoiceEnabled] = useState<boolean>(true)
 
     const voiceApi = useRef<AACVoiceAPI | null>(null);
     const wasInitiated = useRef<boolean>(false);
@@ -116,7 +117,7 @@ function App() {
 
     return (
         <>
-            <h1>Click/Say colors to change me!</h1>
+            <h1>Click{isVoiceEnabled && (<> or Say</>)} colors to change me!</h1>
             <div className="row-splotches">
                 <FontAwesomeIcon
                     className="icon blue"
@@ -144,6 +145,7 @@ function App() {
                     <p>{colorText}</p>
                 </div>
 
+                {isVoiceEnabled && (<>
                 {/* ✅ NEW: Mode Selection Panel */}
                 {!wasInitiated.current && (
                     <div className="mode-selection">
@@ -239,6 +241,7 @@ function App() {
                         <div key={i}>{l}</div>
                     ))}
                 </pre>
+                </>)}
             </div>
         </>
     )
