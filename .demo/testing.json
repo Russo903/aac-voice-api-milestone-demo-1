@@ -167,6 +167,20 @@
           "endPlaceholder": "//d12e"
         }
       ]
+    },
+    {
+      "id": "demo-mhs722sw-g3hz",
+      "title": "switch branch to demo",
+      "steps": [
+        {
+          "action": "openTerminal",
+          "terminalId": "1"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "git switch demo-practice"
+        }
+      ]
     }
   ],
   "description": "Code Demo 2 used to present capstone project in cis4398 fall 25"
