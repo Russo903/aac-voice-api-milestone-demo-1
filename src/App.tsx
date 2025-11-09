@@ -39,6 +39,7 @@ function App() {
             } else {
                 await voiceApi.current.initiate({
                     mode: 'online',
+                    modelUrl: "http://localhost:8000",
                     useSpeakerSeparation: useSeparation
                 });
                 const sepText = useSeparation ? ' with speaker separation' : ' (single speaker)';
@@ -92,6 +93,8 @@ function App() {
     const showCommandHistory = () => {
         try {
             voiceApi.current?.displayCommandHistory();
+            
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (e: any) {
             appendLog("[Error] Display popup failed: " + e.message);
         }
