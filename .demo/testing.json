@@ -4,6 +4,20 @@
   "version": 2,
   "demos": [
     {
+      "id": "demo-mhs722sw-g3hz",
+      "title": "switch branch to demo",
+      "steps": [
+        {
+          "action": "openTerminal",
+          "terminalId": "1"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "git switch demo-practice"
+        }
+      ]
+    },
+    {
       "id": "demo-mhpvgxug-h08g",
       "title": "npm install",
       "steps": [
@@ -165,20 +179,6 @@
           "path": "src/App.tsx",
           "startPlaceholder": "//d12s",
           "endPlaceholder": "//d12e"
-        }
-      ]
-    },
-    {
-      "id": "demo-mhs722sw-g3hz",
-      "title": "switch branch to demo",
-      "steps": [
-        {
-          "action": "openTerminal",
-          "terminalId": "1"
-        },
-        {
-          "action": "executeTerminalCommand",
-          "command": "git switch demo-practice"
         }
       ]
     }
