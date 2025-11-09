@@ -1,0 +1,187 @@
+{
+  "$schema": "https://demotime.show/demo-time.schema.json",
+  "title": "AAC API MileStone Demos",
+  "version": 2,
+  "demos": [
+    {
+      "id": "demo-mhs722sw-g3hz",
+      "title": "switch branch to demo",
+      "steps": [
+        {
+          "action": "openTerminal",
+          "terminalId": "1"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "git switch demo-practice"
+        }
+      ]
+    },
+    {
+      "id": "demo-mhpvgxug-h08g",
+      "title": "npm install",
+      "steps": [
+        {
+          "action": "openTerminal",
+          "terminalId": "1"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "npm install aac-voice-api",
+          "insertTypingMode": "character-by-character",
+          "insertTypingSpeed": 50,
+          "autoExecute": true,
+          "terminalId": "1"
+        }
+      ]
+    },
+    {
+      "id": "demo-mhpmjyyd-ob8v",
+      "title": "Highlight empty code block",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "src/App.tsx",
+          "startPlaceholder": "//d1s",
+          "endPlaceholder": "//d1e"
+        }
+      ],
+      "description": "highlights empty block of code to be filled in for initiate"
+    },
+    {
+      "id": "demo-mhpo4tiw-cx5z",
+      "title": "Add Offline",
+      "steps": [
+        {
+          "action": "insert",
+          "path": "src/App.tsx",
+          "contentPath": "demofiles/offlineMode.js",
+          "startPlaceholder": "//d2s",
+          "insertTypingMode": "line-by-line",
+          "insertTypingSpeed": 100
+        },
+        {
+          "action": "highlight",
+          "path": "src/App.tsx",
+          "startPlaceholder": "//d2s",
+          "endPlaceholder": "//d2e"
+        }
+      ]
+    },
+    {
+      "id": "demo-mhppgq7o-zpm4",
+      "title": "Add Online",
+      "steps": [
+        {
+          "action": "insert",
+          "path": "src/App.tsx",
+          "contentPath": "demofiles/onlineMode.js",
+          "startPlaceholder": "//d3s",
+          "insertTypingMode": "line-by-line",
+          "insertTypingSpeed": 100
+        },
+        {
+          "action": "highlight",
+          "path": "src/App.tsx",
+          "startPlaceholder": "//d4s",
+          "endPlaceholder": "//d4e"
+        }
+      ],
+      "description": "adds the ability to use the Online mode"
+    },
+    {
+      "id": "demo-mhppt39y-auf1",
+      "title": "start()",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "src/App.tsx",
+          "startPlaceholder": "//d5s",
+          "endPlaceholder": "//d5e"
+        }
+      ]
+    },
+    {
+      "id": "demo-mhpq5c2g-1j73",
+      "title": "stop()",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "src/App.tsx",
+          "startPlaceholder": "//d6s",
+          "endPlaceholder": "//d6e"
+        }
+      ],
+      "icons": {
+        "start": "",
+        "end": ""
+      }
+    },
+    {
+      "id": "demo-mhpr1281-09sx",
+      "title": "CommandHistory()",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "src/App.tsx",
+          "startPlaceholder": "//d7s",
+          "endPlaceholder": "//d7e"
+        }
+      ]
+    },
+    {
+      "id": "demo-mhpt34fh-9nc0",
+      "title": "add commands",
+      "steps": [
+        {
+          "action": "insert",
+          "path": "src/App.tsx",
+          "contentPath": "demofiles/commands.js",
+          "startPlaceholder": "//d8s",
+          "insertTypingMode": "line-by-line",
+          "insertTypingSpeed": 100
+        },
+        {
+          "action": "highlight",
+          "startPlaceholder": "//d9s",
+          "endPlaceholder": "//d9e",
+          "path": "src/App.tsx"
+        }
+      ],
+      "description": "adds the array of commands"
+    },
+    {
+      "id": "demo-mhpthjny-5s4g",
+      "title": "Highlight single command",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "src/App.tsx",
+          "startPlaceholder": "//d10s",
+          "endPlaceholder": "//d10e"
+        }
+      ]
+    },
+    {
+      "id": "demo-mhptm91z-ve6s",
+      "title": "Add command to library",
+      "steps": [
+        {
+          "action": "insert",
+          "path": "src/App.tsx",
+          "contentPath": "demofiles/addVoiceCommand.js",
+          "startPlaceholder": "//d11",
+          "insertTypingMode": "line-by-line",
+          "insertTypingSpeed": 100
+        },
+        {
+          "action": "highlight",
+          "path": "src/App.tsx",
+          "startPlaceholder": "//d12s",
+          "endPlaceholder": "//d12e"
+        }
+      ]
+    }
+  ],
+  "description": "Code Demo 2 used to present capstone project in cis4398 fall 25"
+}
