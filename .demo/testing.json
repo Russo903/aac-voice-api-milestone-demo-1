@@ -181,6 +181,21 @@
           "endPlaceholder": "//d12e"
         }
       ]
+    },
+    {
+      "id": "demo-mhsefyg8-taom",
+      "title": "run game",
+      "steps": [
+        {
+          "action": "openTerminal",
+          "terminalId": "1"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "terminalId": "1",
+          "command": "npm run dev"
+        }
+      ]
     }
   ],
   "description": "Code Demo 2 used to present capstone project in cis4398 fall 25"
