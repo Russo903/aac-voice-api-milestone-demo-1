@@ -183,6 +183,18 @@
       ]
     },
     {
+      "id": "demo-mhseifvb-cuni",
+      "title": "getTranscription",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "src/App.tsx",
+          "startPlaceholder": "//d15s",
+          "endPlaceholder": "//d15s"
+        }
+      ]
+    },
+    {
       "id": "demo-mhsefyg8-taom",
       "title": "run game",
       "steps": [

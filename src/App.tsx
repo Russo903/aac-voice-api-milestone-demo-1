@@ -101,7 +101,7 @@ function App() {
         if (!isListening) return;
 
         const intervalId = setInterval(() => {
-            const transcribed = voiceApi.current?.getTranscriptionLogs();
+            const transcribed = voiceApi.current?.getTranscriptionLogs();//d15s
 
             if ((transcribed?.length || 0) > lastTranscriptionCount.current) {
                 const newEntries = transcribed?.slice(lastTranscriptionCount.current);
