@@ -6,6 +6,8 @@
             {//d10s
                 name: "red",
                 action: () => changeColor("darkred", "Red"),
+                description: "changes the box red",
+                active: true,
             },//d10e
             {
                 name: "green",
