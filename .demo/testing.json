@@ -43,7 +43,8 @@
           "action": "highlight",
           "path": "src/App.tsx",
           "startPlaceholder": "//d1s",
-          "endPlaceholder": "//d1e"
+          "endPlaceholder": "//d1e",
+          "zoom": 0
         }
       ],
       "description": "highlights empty block of code to be filled in for initiate"
@@ -58,7 +59,11 @@
           "contentPath": "demofiles/offlineMode.js",
           "startPlaceholder": "//d2s",
           "insertTypingMode": "line-by-line",
-          "insertTypingSpeed": 100
+          "insertTypingSpeed": 200
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 2000
         },
         {
           "action": "highlight",
@@ -79,6 +84,10 @@
           "startPlaceholder": "//d3s",
           "insertTypingMode": "line-by-line",
           "insertTypingSpeed": 100
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 2000
         },
         {
           "action": "highlight",

@@ -1,8 +1,8 @@
-import './App.css';
 import { useState, useRef, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSplotch } from '@fortawesome/free-solid-svg-icons'
 import { AACVoiceAPI } from "aac-voice-api";
+import './App.css'
 
 function App() {
     const [color, setColor] = useState<string>("white")
@@ -12,24 +12,41 @@ function App() {
     const [log, setLog] = useState<string[]>([])
     const [mode, setMode] = useState<'offline' | 'online'>('offline');
     const [useSeparation, setUseSeparation] = useState<boolean>(false);
-    const [isVoiceEnabled, setIsVoiceEnabled] = useState<boolean>(true)
+    const [isVoiceEnabled, setIsVoiceEnabled] = useState<boolean>(true);
 
     const voiceApi = useRef<AACVoiceAPI | null>(null);
     const wasInitiated = useRef<boolean>(false);
     const lastTranscriptionCount = useRef<number>(0);
-    const modelUrl = 'https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-tiny.bin';
+
     const appendLog = (message: string) => {
         setLog((prev) => [...prev, message]);
     }
 
-    const initVoice = async () => {//d1s
-        try {//call initiate here
+    const initVoice = async () => {
+        try {
             if (!voiceApi.current) {
                 voiceApi.current = new AACVoiceAPI()
             }
-            //d2s
 
-
+            if (mode === 'offline') {
+                // Offline mode
+               
+                const modelUrl = 'https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-tiny.bin';
+                await voiceApi.current.initiate({
+                    mode: 'offline',
+                    modelUrl: modelUrl,
+                    language: 'en'
+                });
+                appendLog("[System] ✓ Offline mode initialized (local Whisper)");
+            } else {
+                await voiceApi.current.initiate({
+                    mode: 'online',
+                    modelUrl: "http://localhost:8000",
+                    useSpeakerSeparation: useSeparation
+                });
+                const sepText = useSeparation ? ' with speaker separation' : ' (single speaker)';
+                appendLog(`[System] ✓ Online mode initialized${sepText}`);
+            }
 
             setIsButtonDisabled(true);
             wasInitiated.current = true;
@@ -37,11 +54,11 @@ function App() {
         } catch (e) {
             appendLog('[Error] Init failed: ' + e);
         }
-    }//d1e
+    }
 
-    const startListening = async () => {//d5s
+    const startListening = async () => {
         try {
-            voiceApi.current?.start();//d5e
+            voiceApi.current?.start();
             setIsListening(true);
             appendLog('[System] Started listening...\n');
         } catch (e) {
@@ -49,9 +66,9 @@ function App() {
         }
     }
 
-    const stopListening = async () => {//d6s
+    const stopListening = async () => {
         try {
-            voiceApi.current?.stop();//d6e
+            voiceApi.current?.stop();
             setIsListening(false);
             appendLog('[System] Stopped listening...\n');
         } catch (e) {
@@ -75,9 +92,10 @@ function App() {
         }
     }
 
-    const showCommandHistory = () => {//d7s
+    const showCommandHistory = () => {
         try {
-            voiceApi.current?.displayCommandHistory();//d7e
+            voiceApi.current?.displayCommandHistory();
+            
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (e: any) {
             appendLog("[Error] Display popup failed: " + e.message);
@@ -92,16 +110,37 @@ function App() {
     const setupVoiceCommands = () => {
         if (!voiceApi.current) return;
 
-        //d8s
+        const commands = [
+            {
+                name: "blue",
+                action: () => changeColor("dodgerblue", "Blue"),
+            },
+            {
+                name: "red",
+                action: () => changeColor("darkred", "Red"),
+            },
+            {
+                name: "green",
+                action: () => changeColor("darkseagreen", "Green"),
+            },
+            {
+                name: "clear",
+                action: () => changeColor("white", ""),
 
-        //d11s
+            },
+        ];
+
+        commands.forEach(cmd => {
+            const added = voiceApi.current?.addVoiceCommand(cmd.name, cmd.action);
+            if (added) appendLog(`[System] Command added: ${cmd.name}`);
+        });
     };
 
     useEffect(() => {
         if (!isListening) return;
 
         const intervalId = setInterval(() => {
-            const transcribed = voiceApi.current?.getTranscriptionLogs();//d15s
+            const transcribed = voiceApi.current?.getTranscriptionLogs();
 
             if ((transcribed?.length || 0) > lastTranscriptionCount.current) {
                 const newEntries = transcribed?.slice(lastTranscriptionCount.current);
@@ -145,7 +184,6 @@ function App() {
                     }}>
                     <p>{colorText}</p>
                 </div>
-
                 {isVoiceEnabled && (<>
                 {/* ✅ NEW: Mode Selection Panel */}
                 {!wasInitiated.current && (
