@@ -12,6 +12,7 @@ function App() {
     const [log, setLog] = useState<string[]>([])
     const [mode, setMode] = useState<'offline' | 'online'>('offline');
     const [useSeparation, setUseSeparation] = useState<boolean>(false);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [isVoiceEnabled, setIsVoiceEnabled] = useState<boolean>(true);
 
     const voiceApi = useRef<AACVoiceAPI | null>(null);
@@ -34,14 +35,20 @@ function App() {
                 await voiceApi.current.initiate({
                     mode: 'offline',
                     modelUrl: modelUrl,
-                    language: 'en'
+                    language: 'en',
+                    usePhoneticMatching: true,
+                    confidenceThreshold: .90,
+                    logConfidenceScores: true,
                 });
                 appendLog("[System] ✓ Offline mode initialized (local Whisper)");
             } else {
                 await voiceApi.current.initiate({
                     mode: 'online',
                     modelUrl: "http://localhost:8000",
-                    useSpeakerSeparation: useSeparation
+                    useSpeakerSeparation: useSeparation,
+                    usePhoneticMatching: true,
+                    confidenceThreshold: .75,
+                    logConfidenceScores: true,
                 });
                 const sepText = useSeparation ? ' with speaker separation' : ' (single speaker)';
                 appendLog(`[System] ✓ Online mode initialized${sepText}`);
@@ -93,13 +100,16 @@ function App() {
 
     const showCommandHistory = () => {
         try {
-            voiceApi.current?.displayCommandHistory();
+           voiceApi.current?.displayCommandHistory();
             
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (e: any) {
             appendLog("[Error] Display popup failed: " + e.message);
         }
     };
+    const getLogs = () =>{
+        voiceApi.current?.downloadLogsAsJSON();
+    }
 
     const changeColor = (color: string, colorText: string) => {
         setColor(color);
@@ -113,23 +123,35 @@ function App() {
             {
                 name: "blue",
                 action: () => changeColor("dodgerblue", "Blue"),
+                options: {
+                    fetchSynonyms: true,
+                }
             },
             {
                 name: "red",
                 action: () => changeColor("darkred", "Red"),
+                options: {
+                    fetchSynonyms: true,
+                }
             },
             {
                 name: "green",
                 action: () => changeColor("darkseagreen", "Green"),
+                options: {
+                    fetchSynonyms: true,
+                }
             },
             {
                 name: "clear",
                 action: () => changeColor("white", ""),
+                options: {
+                    fetchSynonyms: true,
+                }
             },
         ];
 
         commands.forEach(cmd => {
-            const added = voiceApi.current?.addVoiceCommand(cmd.name, cmd.action);
+            const added = voiceApi.current?.addVoiceCommand(cmd.name, cmd.action, cmd.options);
             if (added) appendLog(`[System] Command added: ${cmd.name}`);
         });
     };
@@ -139,6 +161,7 @@ function App() {
 
         const intervalId = setInterval(() => {
             const transcribed = voiceApi.current?.getTranscriptionLogs();
+            
 
             if ((transcribed?.length || 0) > lastTranscriptionCount.current) {
                 const newEntries = transcribed?.slice(lastTranscriptionCount.current);
@@ -262,6 +285,7 @@ function App() {
 
                     <button onClick={showCommandHistory}>Show History</button>
                     <button onClick={() => changeColor("white", "")}>Clear</button>
+                    <button onClick={getLogs}>Download Logs</button>
                 </div>
 
                 {wasInitiated.current && (
