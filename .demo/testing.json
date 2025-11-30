@@ -36,6 +36,21 @@
       ]
     },
     {
+      "id": "demo-mhsefyg8-taom",
+      "title": "run game",
+      "steps": [
+        {
+          "action": "openTerminal",
+          "terminalId": "1"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "terminalId": "1",
+          "command": "npm run dev"
+        }
+      ]
+    },
+    {
       "id": "demo-mhpmjyyd-ob8v",
       "title": "Highlight initiate()",
       "steps": [
@@ -123,7 +138,7 @@
     },
     {
       "id": "demo-mhpq5c2g-1j73",
-      "title": "stop()",
+      "title": "highlight stop()",
       "steps": [
         {
           "action": "highlight",
@@ -136,6 +151,26 @@
         "start": "",
         "end": ""
       }
+    },
+    {
+      "id": "demo-mim093dx-sy08",
+      "title": "add stop()",
+      "steps": [
+        {
+          "action": "insert",
+          "contentPath": "demofiles/stop.js",
+          "path": "src/App.tsx",
+          "startPlaceholder": "//stop",
+          "insertTypingMode": "line-by-line",
+          "insertTypingSpeed": 250
+        },
+        {
+          "action": "highlight",
+          "startPlaceholder": "//d21",
+          "path": "src/App.tsx",
+          "endPlaceholder": "//d21"
+        }
+      ]
     },
     {
       "id": "demo-mhpr1281-09sx",
@@ -172,7 +207,7 @@
     },
     {
       "id": "demo-mhpthjny-5s4g",
-      "title": "Highlight single command",
+      "title": "Highlight 2 commands",
       "steps": [
         {
           "action": "highlight",
@@ -215,17 +250,22 @@
       ]
     },
     {
-      "id": "demo-mhsefyg8-taom",
-      "title": "run game",
+      "id": "demo-mim2e1oo-ljjl",
+      "title": "download Logs",
       "steps": [
         {
-          "action": "openTerminal",
-          "terminalId": "1"
+          "action": "insert",
+          "path": "src/App.tsx",
+          "contentPath": "demofiles/downloadLogs.js",
+          "startPlaceholder": "//download",
+          "insertTypingMode": "line-by-line",
+          "insertTypingSpeed": 250
         },
         {
-          "action": "executeTerminalCommand",
-          "terminalId": "1",
-          "command": "npm run dev"
+          "action": "highlight",
+          "path": "src/App.tsx",
+          "startPlaceholder": "//d22",
+          "endPlaceholder": "//d22"
         }
       ]
     }

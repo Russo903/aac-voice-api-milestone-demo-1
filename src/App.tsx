@@ -40,7 +40,7 @@ function App() {
     const startListening = async () => {//d5s
         try {
             //start
-            
+
         } catch (e) {
             appendLog('[Error] Start failed: ' + e + '\n');
         }
@@ -48,13 +48,12 @@ function App() {
 
     const stopListening = async () => {//d6s
         try {
-            voiceApi.current?.stop();//d6e
-            setIsListening(false);
-            appendLog('[System] Stopped listening...\n');
+            //stop
+
         } catch (e) {
             appendLog('[Error] Stop failed: ' + e + '\n');
         }
-    }
+    }//d6e
 
     const toggleSeparation = () => {
         if (!wasInitiated.current || mode !== 'online') {
@@ -75,11 +74,21 @@ function App() {
     const showCommandHistory = () => {//d7s
         try {
             voiceApi.current?.displayCommandHistory();//d7e
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        } catch (e: any) {
+        
+        } catch (e) {
             appendLog("[Error] Display popup failed: " + e.message);
         }
     };
+
+    const downloadLogs = () => {
+        try{
+            //download
+        }
+        catch(e){
+            appendLog('[Error] downloading logs to file '+ e);
+        }
+        
+    }
 
     const changeColor = (color: string, colorText: string) => {
         setColor(color);
@@ -223,6 +232,7 @@ function App() {
 
                     <button onClick={showCommandHistory}>Show History</button>
                     <button onClick={() => changeColor("white", "")}>Clear</button>
+                    <button onClick={() => downloadLogs()}>Download Logs</button>
                 </div>
 
                 {wasInitiated.current && (
