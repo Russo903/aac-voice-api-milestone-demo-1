@@ -37,7 +37,7 @@
     },
     {
       "id": "demo-mhpmjyyd-ob8v",
-      "title": "Highlight empty code block",
+      "title": "Highlight initiate()",
       "steps": [
         {
           "action": "highlight",
@@ -58,7 +58,7 @@
           "contentPath": "demofiles/offlineMode.js",
           "startPlaceholder": "//d2s",
           "insertTypingMode": "line-by-line",
-          "insertTypingSpeed": 100
+          "insertTypingSpeed": 250
         },
         {
           "action": "highlight",
@@ -78,7 +78,7 @@
           "contentPath": "demofiles/onlineMode.js",
           "startPlaceholder": "//d3s",
           "insertTypingMode": "line-by-line",
-          "insertTypingSpeed": 100
+          "insertTypingSpeed": 250
         },
         {
           "action": "highlight",
@@ -91,13 +91,33 @@
     },
     {
       "id": "demo-mhppt39y-auf1",
-      "title": "start()",
+      "title": "highlight start()",
       "steps": [
         {
           "action": "highlight",
           "path": "src/App.tsx",
           "startPlaceholder": "//d5s",
           "endPlaceholder": "//d5e"
+        }
+      ]
+    },
+    {
+      "id": "demo-milzwje7-vbc7",
+      "title": "add start()",
+      "steps": [
+        {
+          "action": "insert",
+          "contentPath": "demofiles/start.js",
+          "path": "src/App.tsx",
+          "startPlaceholder": "//start",
+          "insertTypingMode": "line-by-line",
+          "insertTypingSpeed": 250
+        },
+        {
+          "action": "highlight",
+          "startPlaceholder": "//d20s",
+          "endPlaceholder": "//d20s",
+          "path": "src/App.tsx"
         }
       ]
     },

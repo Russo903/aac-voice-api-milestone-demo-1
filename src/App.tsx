@@ -31,9 +31,7 @@ function App() {
 
 
 
-            setIsButtonDisabled(true);
-            wasInitiated.current = true;
-            setupVoiceCommands();
+
         } catch (e) {
             appendLog('[Error] Init failed: ' + e);
         }
@@ -41,13 +39,12 @@ function App() {
 
     const startListening = async () => {//d5s
         try {
-            voiceApi.current?.start();//d5e
-            setIsListening(true);
-            appendLog('[System] Started listening...\n');
+            //start
+            
         } catch (e) {
             appendLog('[Error] Start failed: ' + e + '\n');
         }
-    }
+    }//d5e
 
     const stopListening = async () => {//d6s
         try {

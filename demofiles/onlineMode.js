@@ -7,3 +7,7 @@
                 const sepText = useSeparation ? ' with speaker separation' : ' (single speaker)';
                 appendLog(`[System] Online mode initialized${sepText}`);
             }
+
+            setIsButtonDisabled(true);
+            wasInitiated.current = true;
+            setupVoiceCommands();
