@@ -5,7 +5,7 @@
                     useSpeakerSeparation: useSeparation,
                     usePhoneticMatching: true,
                     confidenceThreshold: 0.9,
-                    logConfidenceScores: true,
+                    logConfidenceScores: false,
 
                 });//d4e
                 const sepText = useSeparation ? ' with speaker separation' : ' (single speaker)';

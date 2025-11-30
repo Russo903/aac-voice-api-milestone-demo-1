@@ -6,7 +6,7 @@
                     language: 'en',
                     usePhoneticMatching: true,
                     confidenceThreshold: 0.9,
-                    logConfidenceScores: true,
+                    logConfidenceScores: false,
                 });
                 appendLog("[System] Offline mode initialized (local Whisper)");//d2e
             } 
