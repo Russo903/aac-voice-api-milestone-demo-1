@@ -1,3 +1,3 @@
-            voiceApi.current?.stop();//d6e
+            voiceApi.current?.stop();//d21
             setIsListening(false);
             appendLog('[System] Stopped listening...\n');
