@@ -9,6 +9,7 @@ export default defineConfig({
       allow: [
         searchForWorkspaceRoot(process.cwd()),
         '/Users/ginorusso_1/capstone-project/project-001-aac-api/dist/whisper/libstream.wasm',
+        '/home/mcolbert/cis4398/project-001-aac-api/dist/whisper/libstream.wasm',
       ]
     },
     headers: {
