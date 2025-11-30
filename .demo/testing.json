@@ -242,6 +242,14 @@
       "title": "getTranscription",
       "steps": [
         {
+          "action": "insert",
+          "path": "src/App.tsx",
+          "contentPath": "demofiles/commandHistory.js",
+          "startPlaceholder": "//history",
+          "insertTypingMode": "line-by-line",
+          "insertTypingSpeed": 250
+        },
+        {
           "action": "highlight",
           "path": "src/App.tsx",
           "startPlaceholder": "//d15s",
