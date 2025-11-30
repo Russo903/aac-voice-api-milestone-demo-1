@@ -173,18 +173,6 @@
       ]
     },
     {
-      "id": "demo-mhpr1281-09sx",
-      "title": "CommandHistory()",
-      "steps": [
-        {
-          "action": "highlight",
-          "path": "src/App.tsx",
-          "startPlaceholder": "//d7s",
-          "endPlaceholder": "//d7e"
-        }
-      ]
-    },
-    {
       "id": "demo-mhpt34fh-9nc0",
       "title": "add commands",
       "steps": [
@@ -234,6 +222,26 @@
           "path": "src/App.tsx",
           "startPlaceholder": "//d12s",
           "endPlaceholder": "//d12e"
+        }
+      ]
+    },
+    {
+      "id": "demo-mhpr1281-09sx",
+      "title": "CommandHistory()",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "src/App.tsx",
+          "startPlaceholder": "//d7s",
+          "endPlaceholder": "//d7e"
+        },
+        {
+          "action": "insert",
+          "path": "src/App.tsx",
+          "contentPath": "demofiles/commandHistory.js",
+          "startPlaceholder": "//history",
+          "insertTypingMode": "line-by-line",
+          "insertTypingSpeed": 250
         }
       ]
     },
