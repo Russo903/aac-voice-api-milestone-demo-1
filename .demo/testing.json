@@ -246,26 +246,6 @@
       ]
     },
     {
-      "id": "demo-mhseifvb-cuni",
-      "title": "getTranscription",
-      "steps": [
-        {
-          "action": "insert",
-          "path": "src/App.tsx",
-          "contentPath": "demofiles/commandHistory.js",
-          "startPlaceholder": "//history",
-          "insertTypingMode": "line-by-line",
-          "insertTypingSpeed": 250
-        },
-        {
-          "action": "highlight",
-          "path": "src/App.tsx",
-          "startPlaceholder": "//d15s",
-          "endPlaceholder": "//d15s"
-        }
-      ]
-    },
-    {
       "id": "demo-mim2e1oo-ljjl",
       "title": "download Logs",
       "steps": [
