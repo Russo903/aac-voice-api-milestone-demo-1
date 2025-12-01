@@ -73,7 +73,7 @@ function App() {
 
     const showCommandHistory = () => {//d7s
         try {
-            //history
+            voiceApi.current?.displayCommandHistory();//d7e
         
         } catch (e) {
             appendLog("[Error] Display popup failed: " + e);
