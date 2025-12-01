@@ -220,7 +220,7 @@
         {
           "action": "highlight",
           "path": "src/App.tsx",
-          "startPlaceholder": "//d12s",
+          "startPlaceholder": "//d12e",
           "endPlaceholder": "//d12e"
         }
       ]
