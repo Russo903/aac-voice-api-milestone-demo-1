@@ -51,21 +51,8 @@
       ]
     },
     {
-      "id": "demo-mhpmjyyd-ob8v",
-      "title": "Highlight initiate()",
-      "steps": [
-        {
-          "action": "highlight",
-          "path": "src/App.tsx",
-          "startPlaceholder": "//d1s",
-          "endPlaceholder": "//d1e"
-        }
-      ],
-      "description": "highlights empty block of code to be filled in for initiate"
-    },
-    {
       "id": "demo-mhpo4tiw-cx5z",
-      "title": "Add Offline",
+      "title": "type initiate",
       "steps": [
         {
           "action": "insert",
@@ -85,16 +72,8 @@
     },
     {
       "id": "demo-mhppgq7o-zpm4",
-      "title": "Add Online",
+      "title": "highlight online",
       "steps": [
-        {
-          "action": "insert",
-          "path": "src/App.tsx",
-          "contentPath": "demofiles/onlineMode.js",
-          "startPlaceholder": "//d3s",
-          "insertTypingMode": "line-by-line",
-          "insertTypingSpeed": 250
-        },
         {
           "action": "highlight",
           "path": "src/App.tsx",
@@ -105,18 +84,6 @@
       "description": "adds the ability to use the Online mode"
     },
     {
-      "id": "demo-mhppt39y-auf1",
-      "title": "highlight start()",
-      "steps": [
-        {
-          "action": "highlight",
-          "path": "src/App.tsx",
-          "startPlaceholder": "//d5s",
-          "endPlaceholder": "//d5e"
-        }
-      ]
-    },
-    {
       "id": "demo-milzwje7-vbc7",
       "title": "add start()",
       "steps": [
@@ -125,7 +92,7 @@
           "contentPath": "demofiles/start.js",
           "path": "src/App.tsx",
           "startPlaceholder": "//start",
-          "insertTypingMode": "line-by-line",
+          "insertTypingMode": "instant",
           "insertTypingSpeed": 250
         },
         {
@@ -137,22 +104,6 @@
       ]
     },
     {
-      "id": "demo-mhpq5c2g-1j73",
-      "title": "highlight stop()",
-      "steps": [
-        {
-          "action": "highlight",
-          "path": "src/App.tsx",
-          "startPlaceholder": "//d6s",
-          "endPlaceholder": "//d6e"
-        }
-      ],
-      "icons": {
-        "start": "",
-        "end": ""
-      }
-    },
-    {
       "id": "demo-mim093dx-sy08",
       "title": "add stop()",
       "steps": [
@@ -161,7 +112,7 @@
           "contentPath": "demofiles/stop.js",
           "path": "src/App.tsx",
           "startPlaceholder": "//stop",
-          "insertTypingMode": "line-by-line",
+          "insertTypingMode": "instant",
           "insertTypingSpeed": 250
         },
         {
@@ -215,7 +166,7 @@
           "contentPath": "demofiles/addVoiceCommand.js",
           "startPlaceholder": "//d11",
           "insertTypingMode": "line-by-line",
-          "insertTypingSpeed": 100
+          "insertTypingSpeed": 75
         },
         {
           "action": "highlight",
