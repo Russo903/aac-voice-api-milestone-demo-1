@@ -60,7 +60,7 @@
           "contentPath": "demofiles/offlineMode.js",
           "startPlaceholder": "//d2s",
           "insertTypingMode": "line-by-line",
-          "insertTypingSpeed": 250
+          "insertTypingSpeed": 100
         },
         {
           "action": "highlight",
@@ -133,7 +133,7 @@
           "contentPath": "demofiles/commands.js",
           "startPlaceholder": "//d8s",
           "insertTypingMode": "line-by-line",
-          "insertTypingSpeed": 100
+          "insertTypingSpeed": 50
         },
         {
           "action": "highlight",
