@@ -36,8 +36,8 @@ function App() {
                     usePhoneticMatching: true,
                     confidenceThreshold: 0.9,
                     logConfidenceScores: false,
-                });
-                appendLog("[System] Offline mode initialized (local Whisper)");//d2e
+                });//d2e
+                appendLog("[System] Offline mode initialized (local Whisper)");
             } 
             else {
                 await voiceApi.current.initiate({//d4s
@@ -56,7 +56,6 @@ function App() {
             setIsButtonDisabled(true);
             wasInitiated.current = true;
             setupVoiceCommands();
-
 
 
 
@@ -132,22 +131,24 @@ function App() {
         if (!voiceApi.current) return;
 
         const commands = [//d9s
-            {
+            {//d10s
                 name: "blue",
                 action: () => changeColor("dodgerblue", "Blue"),
                 options:{
                     description: "changes color to blue",
                     fetchSynonyms: true,
+                    numberOfSynonyms:5,
                 }
             },
-            {//d10s
+            {
                 name: "red",
                 action: () => changeColor("darkred", "Red"),
                 options:{
                     description: "changes color to red",
                     fetchSynonyms: true,
+                    numberOfSynonyms:3,
                 }
-            },
+            },//d10e
             {
                 name: "green",
                 action: () => changeColor("darkseagreen", "Green"),
@@ -155,7 +156,7 @@ function App() {
                     description: "changes color to green",
                     fetchSynonyms: false,
                 }                
-            },//d10e
+            },
             {
                 name: "clear",
                 action: () => changeColor("white", ""),
